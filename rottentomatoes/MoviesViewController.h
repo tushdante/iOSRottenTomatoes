@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MovieTableViewCell.h"
 
 @interface MoviesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 

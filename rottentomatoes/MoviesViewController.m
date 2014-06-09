@@ -7,14 +7,13 @@
 //
 
 #import "MoviesViewController.h"
-#import "MovieTableViewCell.h"
 #import "MBProgressHUD.h"
 #import <AFNetworking/UIKit+AFNetworking.h>
 
 
 @interface MoviesViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) NSArray *movies;
+@property (strong, nonatomic) NSArray *movies;
 
 @end
 
@@ -41,7 +40,7 @@
     [self apiCall];
     
 
-    self.tableView.rowHeight = 120;
+    self.tableView.rowHeight = 140;
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,11 +61,8 @@
     NSDictionary *movie = self.movies[indexPath.row];
     static NSString *CellIdentifier = @"MovieTableViewCell";
     
-    MovieTableViewCell *movieCell = (MovieTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (movieCell == nil) {
-        NSLog(@"inside nil condition");
-        movieCell = [[MovieTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
+    MovieTableViewCell *movieCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+
     
     movieCell.movieTitleLabel.text = movie[@"title"];
     movieCell.synopsisLabel.text = movie[@"synopsis"];

@@ -1,45 +1,45 @@
 //
-//  MoviesViewController.m
+//  MoviesTableViewController.m
 //  rottentomatoes
 //
-//  Created by Tushar Bhushan on 6/6/14.
+//  Created by Tushar Bhushan on 6/9/14.
 //  Copyright (c) 2014 Tushar Bhushan. All rights reserved.
 //
 
-#import "MoviesViewController.h"
+#import "MoviesTableViewController.h"
 #import "MBProgressHUD.h"
 #import <AFNetworking/UIKit+AFNetworking.h>
 #import "Reachability.h"
+#import "MovieTableViewCell.h"
 
-
-@interface MoviesViewController ()
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@interface MoviesTableViewController ()
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *movies;
 @property (weak, nonatomic) IBOutlet UIView *networkErrorView;
 
 @end
 
-@implementation MoviesViewController
+@implementation MoviesTableViewController
 bool refreshValue;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     [self networkErrorControl:YES];
-
+    
     self.title = @"Rotten Tomatoes App";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+//    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 0.01f)];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+
     [self.tableView registerNib:[UINib nibWithNibName:@"MovieTableViewCell" bundle:nil] forCellReuseIdentifier:@"MovieTableViewCell"];
     
     [self networkErrorControl:YES];
@@ -53,21 +53,12 @@ bool refreshValue;
             [MBProgressHUD hideHUDForView:self.view animated:YES];
         });
     });
-    
-    //Pull to refresh code
-    
-
-    
-//        self.refreshControl = [[UIRefreshControl alloc] init];
-//        self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
-//
-//		[self.refreshControl addTarget:self action:@selector(refreshData:forState:) forControlEvents:UIControlEventValueChanged];
-//		refreshValue = YES;
-//	
-    
-    
-
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
+    [self.refreshControl addTarget:self action:@selector(refreshData:forState:) forControlEvents:UIControlEventValueChanged];
+    refreshValue = YES;
     self.tableView.rowHeight = 140;
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -76,10 +67,12 @@ bool refreshValue;
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.movies.count;
 }
+
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -89,7 +82,7 @@ bool refreshValue;
     static NSString *CellIdentifier = @"MovieTableViewCell";
     
     MovieTableViewCell *movieCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-
+    
     
     movieCell.movieTitleLabel.text = movie[@"title"];
     movieCell.synopsisLabel.text = movie[@"synopsis"];
@@ -99,6 +92,32 @@ bool refreshValue;
     [movieCell.posterView setImageWithURL:[NSURL URLWithString:poster]];
     
     return movieCell;
+}
+
+
+
+
+#pragma mark - Table view delegate
+
+// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Navigation logic may go here, for example:
+    // Create the next view controller.
+    MovieViewController *detailViewController = [[MovieViewController alloc] initWithNibName:@"MovieViewController" bundle:nil];
+    
+    // Pass the selected object to the new view controller.
+    
+    // Push the view controller.
+    NSDictionary *currentMovie = self.movies[indexPath.row];
+
+//    MovieViewController *movie = self.movies[indexPath.row];
+    detailViewController.currentMovie = currentMovie;
+
+
+    
+    
+    [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
 
@@ -123,7 +142,7 @@ bool refreshValue;
 
 - (void) refreshData:(id)sender forState:(UIControlState)state {
     [self apiCall];
-//    [self.refreshControl endRefreshing];
+    [self.refreshControl endRefreshing];
 }
 
 -(BOOL)canBecomeFirstResponder
@@ -192,3 +211,4 @@ bool refreshValue;
 
 
 @end
+

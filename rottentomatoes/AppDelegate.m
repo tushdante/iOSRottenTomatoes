@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "MoviesViewController.h"
+#import "MoviesTableViewController.h"
 
 @implementation AppDelegate
 
@@ -17,7 +17,7 @@
     // Override point for customization after application launch.
     
     
-    MoviesViewController *vc = [[MoviesViewController alloc] init];
+    MoviesTableViewController *vc = [[MoviesTableViewController alloc] init];
     UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
     self.window.rootViewController = nvc;
 

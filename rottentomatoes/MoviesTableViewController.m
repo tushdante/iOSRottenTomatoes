@@ -32,7 +32,6 @@ bool refreshValue;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    [self networkErrorControl:YES];
     
     self.title = @"Rotten Tomatoes App";
     self.tableView.delegate = self;
@@ -42,7 +41,6 @@ bool refreshValue;
 
     [self.tableView registerNib:[UINib nibWithNibName:@"MovieTableViewCell" bundle:nil] forCellReuseIdentifier:@"MovieTableViewCell"];
     
-    [self networkErrorControl:YES];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
@@ -181,32 +179,12 @@ bool refreshValue;
 -(BOOL) checkConnection {
 	//Make sure we have internet connectivity
 	if([self connectionHelper] != YES) {
-        [self networkErrorControl:NO];
+//        [self networkErrorControl:NO];
 		return NO;
 	} else {
-        [self networkErrorControl:YES];
+//        [self networkErrorControl:YES];
 		return YES;
 	}
-}
-
-
-
--(void) networkErrorControl: (BOOL)status {
-    if (status) {
-        //resize to 0,0
-        self.networkErrorView.hidden = YES;
-        CGRect newFrame = self.networkErrorView.frame;
-        
-        newFrame.size.height = 0;
-        [self.networkErrorView setFrame:newFrame];
-    }else{
-        //resize to 0, 50
-        self.networkErrorView.hidden = NO;
-        CGRect newFrame = self.networkErrorView.frame;
-        
-        newFrame.size.height = 45;
-        [self.networkErrorView setFrame:newFrame];
-    }
 }
 
 

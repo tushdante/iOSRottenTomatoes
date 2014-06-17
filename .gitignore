@@ -22,4 +22,4 @@ DerivedData
 # The pros and cons of ignoring the Pods directory are mentioned at:
 # http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control
 #
-Pods/
+#Pods/

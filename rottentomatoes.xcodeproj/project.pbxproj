@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		62178EAA1946A62C003AAC73 /* MovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62178EA81946A62C003AAC73 /* MovieViewController.m */; };
-		62178EAB1946A62C003AAC73 /* MovieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62178EA91946A62C003AAC73 /* MovieViewController.xib */; };
+		620BD6FB194FE40100DEA848 /* MoviesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 620BD6F9194FE40100DEA848 /* MoviesViewController.m */; };
+		620BD6FC194FE40100DEA848 /* MoviesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 620BD6FA194FE40100DEA848 /* MoviesViewController.xib */; };
 		6228BB1919424FC90039F144 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6228BB1819424FC90039F144 /* Foundation.framework */; };
 		6228BB1B19424FC90039F144 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6228BB1A19424FC90039F144 /* CoreGraphics.framework */; };
 		6228BB1D19424FC90039F144 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6228BB1C19424FC90039F144 /* UIKit.framework */; };
@@ -41,9 +41,9 @@
 
 /* Begin PBXFileReference section */
 		0A9D3D8661AF40098A2B21B6 /* Pods-rottentomatoes.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rottentomatoes.xcconfig"; path = "Pods/Pods-rottentomatoes.xcconfig"; sourceTree = "<group>"; };
-		62178EA71946A62C003AAC73 /* MovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieViewController.h; sourceTree = "<group>"; };
-		62178EA81946A62C003AAC73 /* MovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieViewController.m; sourceTree = "<group>"; };
-		62178EA91946A62C003AAC73 /* MovieViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieViewController.xib; sourceTree = "<group>"; };
+		620BD6F8194FE40100DEA848 /* MoviesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviesViewController.h; sourceTree = "<group>"; };
+		620BD6F9194FE40100DEA848 /* MoviesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviesViewController.m; sourceTree = "<group>"; };
+		620BD6FA194FE40100DEA848 /* MoviesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviesViewController.xib; sourceTree = "<group>"; };
 		6228BB1519424FC90039F144 /* rottentomatoes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rottentomatoes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6228BB1819424FC90039F144 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6228BB1A19424FC90039F144 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -136,16 +136,16 @@
 				6228BB2719424FC90039F144 /* AppDelegate.h */,
 				6228BB2819424FC90039F144 /* AppDelegate.m */,
 				6228BB2A19424FC90039F144 /* Images.xcassets */,
-				6228BB1F19424FC90039F144 /* Supporting Files */,
 				628A51B619457339009AB255 /* MovieTableViewCell.h */,
 				628A51B719457339009AB255 /* MovieTableViewCell.m */,
 				628A51B819457339009AB255 /* MovieTableViewCell.xib */,
 				62FE68D41946928100790FD2 /* MoviesTableViewController.h */,
 				62FE68D51946928100790FD2 /* MoviesTableViewController.m */,
 				62FE68D61946928100790FD2 /* MoviesTableViewController.xib */,
-				62178EA71946A62C003AAC73 /* MovieViewController.h */,
-				62178EA81946A62C003AAC73 /* MovieViewController.m */,
-				62178EA91946A62C003AAC73 /* MovieViewController.xib */,
+				6228BB1F19424FC90039F144 /* Supporting Files */,
+				620BD6F8194FE40100DEA848 /* MoviesViewController.h */,
+				620BD6F9194FE40100DEA848 /* MoviesViewController.m */,
+				620BD6FA194FE40100DEA848 /* MoviesViewController.xib */,
 			);
 			path = rottentomatoes;
 			sourceTree = "<group>";
@@ -259,8 +259,8 @@
 				6228BB2319424FC90039F144 /* InfoPlist.strings in Resources */,
 				628A51BA19457339009AB255 /* MovieTableViewCell.xib in Resources */,
 				6228BB2B19424FC90039F144 /* Images.xcassets in Resources */,
-				62178EAB1946A62C003AAC73 /* MovieViewController.xib in Resources */,
 				62FE68D81946928100790FD2 /* MoviesTableViewController.xib in Resources */,
+				620BD6FC194FE40100DEA848 /* MoviesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,9 +313,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6228BB2919424FC90039F144 /* AppDelegate.m in Sources */,
-				62178EAA1946A62C003AAC73 /* MovieViewController.m in Sources */,
 				628A51B919457339009AB255 /* MovieTableViewCell.m in Sources */,
 				6228BB2519424FC90039F144 /* main.m in Sources */,
+				620BD6FB194FE40100DEA848 /* MoviesViewController.m in Sources */,
 				62FE68D71946928100790FD2 /* MoviesTableViewController.m in Sources */,
 				62FE68D31946776900790FD2 /* Reachability.m in Sources */,
 			);

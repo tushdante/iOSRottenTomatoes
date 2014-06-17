@@ -11,6 +11,7 @@
 #import <AFNetworking/UIKit+AFNetworking.h>
 #import "Reachability.h"
 #import "MovieTableViewCell.h"
+#import "MoviesViewController.h"
 
 @interface MoviesTableViewController ()
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -102,7 +103,10 @@ bool refreshValue;
 {
     // Navigation logic may go here, for example:
     // Create the next view controller.
-    MovieViewController *detailViewController = [[MovieViewController alloc] initWithNibName:@"MovieViewController" bundle:nil];
+    MovieTableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+    selectedCell.contentView.backgroundColor = [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:1.0];
+
+    MoviesViewController *detailViewController = [[MoviesViewController alloc] initWithNibName:@"MoviesViewController" bundle:nil];
     
     // Pass the selected object to the new view controller.
     
@@ -111,7 +115,7 @@ bool refreshValue;
 
 //    MovieViewController *movie = self.movies[indexPath.row];
     detailViewController.currentMovie = currentMovie;
-
+    
 
     
     
